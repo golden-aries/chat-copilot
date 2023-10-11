@@ -21,15 +21,22 @@ public class HelpDeskSkill
         [Description("Department Name (for department installation)")] string department)
     {
         await Task.CompletedTask;
-        return new SKContext();
+        var n = Guid.NewGuid();
+        var result = new SKContext(
+            new ContextVariables
+            ($"Quote created #: {n}. Please download it here: https://telexy.com/quotes/{n}"));
+        return result;
     }
 
 
-    [SKFunction, Description("File ticket for Telexy Support Team")]
+    [SKFunction, Description("Creates and files ticket for the Telexy Support Team")]
     public async Task<SKContext> FileTicketAsync(
         [Description("Problem Description")] string description)
     {
         await Task.CompletedTask;
-        return new SKContext();
+        var n = Guid.NewGuid();
+        return new SKContext(
+            new ContextVariables(
+                $"Ticket created #: {n}. You can check the progress here https://telexy.com/tickets/{n}"));
     }
 }

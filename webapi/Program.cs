@@ -69,7 +69,7 @@ public sealed class Program
 
         // Add in the rest of the services.
         builder.Services
-            .AddMainetnanceServices()
+            //.AddMainetnanceServices() // commented this out because it throwing errors documented in sk_copilot_migration_service_error_and_fixes.md
             .AddEndpointsApiExplorer()
             .AddSwaggerGen()
             .AddCorsPolicy(builder.Configuration)
@@ -85,7 +85,7 @@ public sealed class Program
         app.UseCors();
         app.UseAuthentication();
         app.UseAuthorization();
-        app.UseMiddleware<MaintenanceMiddleware>();
+        //app.UseMiddleware<MaintenanceMiddleware>(); // commented this out because it throwing errors described in sk_copilot_migration_service_error_and_fixes.md
         app.MapControllers()
             .RequireAuthorization();
         app.MapHealthChecks("/healthz");
