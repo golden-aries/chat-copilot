@@ -157,7 +157,7 @@ internal static class SemanticKernelExtensions
                 chatMessageRepository: sp.GetRequiredService<ChatMessageRepository>(),
                 chatSessionRepository: sp.GetRequiredService<ChatSessionRepository>(),
                 messageRelayHubContext: sp.GetRequiredService<IHubContext<MessageRelayHub>>(),
-                promptOptions: sp.GetRequiredService<IOptions<PromptsOptions>>(),
+                promptOptions: sp.GetRequiredService<IOptionsMonitor<PromptsOptions>>(),
                 documentImportOptions: sp.GetRequiredService<IOptions<DocumentMemoryOptions>>(),
                 contentSafety: sp.GetService<AzureContentSafety>(),
                 planner: sp.GetRequiredService<CopilotChatPlanner>(),

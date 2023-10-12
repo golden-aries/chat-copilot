@@ -97,7 +97,7 @@ public class ChatSkill
         ChatMessageRepository chatMessageRepository,
         ChatSessionRepository chatSessionRepository,
         IHubContext<MessageRelayHub> messageRelayHubContext,
-        IOptions<PromptsOptions> promptOptions,
+        IOptionsMonitor<PromptsOptions> promptOptions,
         IOptions<DocumentMemoryOptions> documentImportOptions,
         CopilotChatPlanner planner,
         ILogger logger,
@@ -110,7 +110,7 @@ public class ChatSkill
         this._chatSessionRepository = chatSessionRepository;
         this._messageRelayHubContext = messageRelayHubContext;
         // Clone the prompt options to avoid modifying the original prompt options.
-        this._promptOptions = promptOptions.Value.Copy();
+        this._promptOptions = promptOptions.CurrentValue.Copy();
 
         this._semanticMemoryRetriever = new SemanticMemoryRetriever(
             promptOptions,

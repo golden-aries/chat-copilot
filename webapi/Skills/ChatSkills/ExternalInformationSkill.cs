@@ -66,11 +66,11 @@ public class ExternalInformationSkill
     /// Create a new instance of ExternalInformationSkill.
     /// </summary>
     public ExternalInformationSkill(
-        IOptions<PromptsOptions> promptOptions,
+        IOptionsMonitor<PromptsOptions> promptOptions,
         CopilotChatPlanner planner,
         ILogger logger)
     {
-        this._promptOptions = promptOptions.Value;
+        this._promptOptions = promptOptions.CurrentValue;
         this._planner = planner;
         this._logger = logger;
     }

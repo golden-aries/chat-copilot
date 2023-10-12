@@ -38,12 +38,12 @@ public class SemanticMemoryRetriever
     /// Create a new instance of SemanticMemoryRetriever.
     /// </summary>
     public SemanticMemoryRetriever(
-        IOptions<PromptsOptions> promptOptions,
+        IOptionsMonitor<PromptsOptions> promptOptions,
         ChatSessionRepository chatSessionRepository,
         ISemanticMemoryClient memoryClient,
         ILogger logger)
     {
-        this._promptOptions = promptOptions.Value;
+        this._promptOptions = promptOptions.CurrentValue;
         this._chatSessionRepository = chatSessionRepository;
         this._memoryClient = memoryClient;
         this._logger = logger;
