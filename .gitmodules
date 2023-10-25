@@ -1,6 +1,6 @@
 [submodule "semantic-kernel"]
 	path = semantic-kernel
-	url = git@github.com:golden-aries/semantic-kernel.git
+	url = https://github.com/golden-aries/semantic-kernel.git
 [submodule "semantic-memory"]
 	path = semantic-memory
 	url = https://github.com/golden-aries/semantic-memory.git
