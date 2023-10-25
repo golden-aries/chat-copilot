@@ -684,16 +684,16 @@ public class ChatSkill
         await this._chatMessageRepository.UpsertAsync(chatMessage!);
 
         // Extract semantic chat memory
-        await this.UpdateBotResponseStatusOnClientAsync(chatId, "Generating semantic chat memory", cancellationToken);
-        await AsyncUtils.SafeInvokeAsync(
-            () => SemanticChatMemoryExtractor.ExtractSemanticChatMemoryAsync(
-                chatId,
-                this._memoryClient,
-                this._kernel,
-                chatContext,
-                this._promptOptions,
-                this._logger,
-                cancellationToken), nameof(SemanticChatMemoryExtractor.ExtractSemanticChatMemoryAsync));
+        //await this.UpdateBotResponseStatusOnClientAsync(chatId, "Generating semantic chat memory", cancellationToken);
+        //await AsyncUtils.SafeInvokeAsync(
+        //    () => SemanticChatMemoryExtractor.ExtractSemanticChatMemoryAsync(
+        //        chatId,
+        //        this._memoryClient,
+        //        this._kernel,
+        //        chatContext,
+        //        this._promptOptions,
+        //        this._logger,
+        //        cancellationToken), nameof(SemanticChatMemoryExtractor.ExtractSemanticChatMemoryAsync));
 
         // Calculate total token usage for dependency functions and prompt template
         await this.UpdateBotResponseStatusOnClientAsync(chatId, "Calculating token usage", cancellationToken);
