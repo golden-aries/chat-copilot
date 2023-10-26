@@ -14,14 +14,15 @@ public class HelpDeskSkill
     /// </summary>
     /// <param name="department"></param>
     /// <returns></returns>
-    [SKFunction, Description("Gets quote for adding department to existing Qpath Deployment.")]
-    public async Task<SKContext> GeQpathAdditionalDepartmentQuoteAsync([Description("Number of departments to add to Qpath")] int depNum)
+    [SKFunction, Description("Gets quote for adding a number of departments to existing Qpath Deployment.")]
+    public async Task<SKContext> GeQpathAdditionalDepartmentQuoteAsync(
+        [Description("Please provide names of departments to add, separated by comma")] string departmentNames)
     {
         await Task.CompletedTask;
         var n = Guid.NewGuid();
         var result = new SKContext(
             new ContextVariables
-            ($"Quote for adding {depNum} departments to existing QPath Deployment created #: {n}. Please navigate to https://telexy.com/quotes/{n} to download the quote pdf file."));
+            ($"Quote for adding {departmentNames} to existing QPath Deployment created #: {n}. Please navigate to https://telexy.com/quotes/{n} to download the quote pdf file."));
         return result;
     }
 

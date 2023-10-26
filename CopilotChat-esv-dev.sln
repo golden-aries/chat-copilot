@@ -53,6 +53,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PluginShared", "plugins\sha
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebSearcher", "plugins\web-searcher\WebSearcher.csproj", "{EFA1FBBD-DEA5-48BF-912B-19AD91FFA613}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "try", "try\try.csproj", "{C0C490F5-76B9-4B1F-AEF0-5CAEB4E14B1A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -198,6 +200,12 @@ Global
 		{EFA1FBBD-DEA5-48BF-912B-19AD91FFA613}.Publish|Any CPU.Build.0 = Debug|Any CPU
 		{EFA1FBBD-DEA5-48BF-912B-19AD91FFA613}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EFA1FBBD-DEA5-48BF-912B-19AD91FFA613}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0C490F5-76B9-4B1F-AEF0-5CAEB4E14B1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0C490F5-76B9-4B1F-AEF0-5CAEB4E14B1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0C490F5-76B9-4B1F-AEF0-5CAEB4E14B1A}.Publish|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0C490F5-76B9-4B1F-AEF0-5CAEB4E14B1A}.Publish|Any CPU.Build.0 = Debug|Any CPU
+		{C0C490F5-76B9-4B1F-AEF0-5CAEB4E14B1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0C490F5-76B9-4B1F-AEF0-5CAEB4E14B1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
