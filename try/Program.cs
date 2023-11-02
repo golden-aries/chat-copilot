@@ -70,15 +70,19 @@ static IServiceScope TestScope()
         {
             config.Suffix = foo.Instance?.Id.ToString() ?? throw new ArgumentException("Foo is null!");
         });
-
+    sc.AddScoped<StepwisePlannerConfig>(sp => sp.GetRequiredService<IOptionsSnapshot<StepwisePlannerConfig>>().Value);
+    sc.AddScoped<Func<FooHolder>>( sp => () => sp.GetRequiredService<FooHolder>());
     var sp = sc.BuildServiceProvider();
     var scope = sp.CreateScope();
     var holder = scope.ServiceProvider.GetRequiredService<FooHolder>();
     holder.Instance = new Foo { Id = 2 };
-    var o = sp.GetRequiredService<IOptions<StepwisePlannerConfig>>();
-    var osc = scope.ServiceProvider.GetRequiredService<IOptions<StepwisePlannerConfig>>();
-    var oscopedmonitor = scope.ServiceProvider.GetRequiredService<IOptionsMonitor<StepwisePlannerConfig>>();
-    var oscoped = scope.ServiceProvider.GetRequiredService<IOptionsSnapshot<StepwisePlannerConfig>>();
+    //var o = sp.GetRequiredService<IOptions<StepwisePlannerConfig>>();
+    //var osc = scope.ServiceProvider.GetRequiredService<IOptions<StepwisePlannerConfig>>();
+    //var oscopedmonitor = scope.ServiceProvider.GetRequiredService<IOptionsMonitor<StepwisePlannerConfig>>();
+    //var oscoped = scope.ServiceProvider.GetRequiredService<IOptionsSnapshot<StepwisePlannerConfig>>();
+    var o = scope.ServiceProvider.GetRequiredService<StepwisePlannerConfig>();
+    var f = scope.ServiceProvider.GetRequiredService<Func<FooHolder>>();
+    var fh = f.Invoke();
     return scope;
 }
 
