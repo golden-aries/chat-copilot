@@ -12,6 +12,7 @@ namespace sk_chatgpt_azure_function
     using Microsoft.Extensions.Logging;
     using System.Globalization;
     using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Attributes;
+    using Microsoft.OpenApi.Models;
 
     namespace MathPlugin
     {
@@ -24,10 +25,11 @@ namespace sk_chatgpt_azure_function
                 _logger = loggerFactory.CreateLogger<Add>();
             }
 
-            [OpenApiOperation(operationId: "Joke", tags: new[] { "Joke" }, Description = "Generate a funny joke")]
-            [OpenApiRequestBody("text/plain", typeof(string), Description = "Joke subject")]
-            [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: "text/plain", bodyType: typeof(string), Description = "The OK response")]
-  
+            [OpenApiOperation(operationId: "Add", tags: new[] { "ExecuteFunction" }, Description = "Adds two numbers.")]
+            [OpenApiParameter(name: "number1", Description = "The first number to add", Required = true, In = ParameterLocation.Query)]
+            [OpenApiParameter(name: "number2", Description = "The second number to add", Required = true, In = ParameterLocation.Query)]
+            [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: "text/plain", bodyType: typeof(string), Description = "Returns the sum of the two numbers.")]
+            [OpenApiResponseWithBody(statusCode: HttpStatusCode.BadRequest, contentType: "application/json", bodyType: typeof(string), Description = "Returns the error of the input.")]
             [Function("Add")]
             public HttpResponseData Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestData req)
             {
