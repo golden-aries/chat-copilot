@@ -33,6 +33,7 @@ using Microsoft.SemanticKernel.Plugins.MsGraph;
 using Microsoft.SemanticKernel.Plugins.MsGraph.Connectors;
 using Microsoft.SemanticKernel.Plugins.MsGraph.Connectors.Client;
 using Microsoft.SemanticKernel.Plugins.OpenApi;
+using Tlx;
 
 namespace CopilotChat.WebApi.Controllers;
 
@@ -192,6 +193,9 @@ public class ChatController : ControllerBase, IDisposable
     /// </summary>
     private async Task RegisterFunctionsAsync(Kernel kernel, Dictionary<string, string> authHeaders, KernelArguments variables)
     {
+        // Register authenticated Skills with the planner's kernel only if the request includes an auth header for the skill.
+        kernel.ImportPluginFromType<HelpDeskSkill>();
+
         // Register authenticated functions with the kernel only if the request includes an auth header for the plugin.
 
         // GitHub
