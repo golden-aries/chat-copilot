@@ -47,6 +47,9 @@ internal static class SemanticKernelExtensions
     {
         builder.InitializeKernelProvider();
 
+        // Register plugins
+        builder.Services.AddScoped<RegisterFunctionsWithKernel>(sp => RegisterChatCopilotFunctionsAsync);
+
         // Semantic Kernel
         builder.Services.AddScoped<Kernel>(
             sp =>
@@ -63,9 +66,6 @@ internal static class SemanticKernelExtensions
 
         // Azure Content Safety
         builder.Services.AddContentSafety();
-
-        // Register plugins
-        builder.Services.AddScoped<RegisterFunctionsWithKernel>(sp => RegisterChatCopilotFunctionsAsync);
 
         // Add any additional setup needed for the kernel.
         // Uncomment the following line and pass in a custom hook for any complimentary setup of the kernel.
