@@ -4,5 +4,5 @@
 	branch = esv/dotnet-1.4.0
 [submodule "km"]
 	path = km
-	url = https://github.com/golden-aries/semantic-memory.git
+	url = https://github.com/golden-aries/kernel-memory.git
 	branch = esv/packages-0.29.240219.2
