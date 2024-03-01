@@ -1,0 +1,8 @@
+[submodule "sk"]
+	path = sk
+	url = https://github.com/golden-aries/semantic-kernel.git
+	branch = esv/dotnet-1.4.0
+[submodule "km"]
+	path = km
+	url = https://github.com/golden-aries/semantic-memory.git
+	branch = esv/packages-0.29.240219.2

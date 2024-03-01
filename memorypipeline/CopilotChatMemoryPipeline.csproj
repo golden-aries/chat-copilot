@@ -10,13 +10,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\km\service\Core\Core.csproj" />
     <ProjectReference Include="..\shared\CopilotChatShared.csproj" />
+    <ProjectReference Include="..\sk\dotnet\src\SemanticKernel.Abstractions\SemanticKernel.Abstractions.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.22.0" />
-    <PackageReference Include="Microsoft.KernelMemory.Core" Version="0.29.240219.2" />
-    <PackageReference Include="Microsoft.SemanticKernel" Version="1.4.0" />
+    <!--<PackageReference Include="Microsoft.KernelMemory.Core" Version="0.29.240219.2" />-->
+    <!--<PackageReference Include="Microsoft.SemanticKernel" Version="1.4.0" />-->
   </ItemGroup>
 
 </Project>
