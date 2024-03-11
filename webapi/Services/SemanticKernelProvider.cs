@@ -13,6 +13,7 @@ using Microsoft.SemanticKernel.Connectors.AzureAISearch;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
 using Microsoft.SemanticKernel.Connectors.Qdrant;
 using Microsoft.SemanticKernel.Memory;
+using TxExperiment.Http;
 
 namespace CopilotChat.WebApi.Services;
 
@@ -49,7 +50,7 @@ public sealed class SemanticKernelProvider
     {
         var builder = Kernel.CreateBuilder();
 
-        builder.Services.AddLogging();
+        builder.Services.AddLogging( lb => lb.AddConsole(lo => lo.LogToStandardErrorThreshold = LogLevel.Trace));
 
         var memoryOptions = serviceProvider.GetRequiredService<IOptions<KernelMemoryConfig>>().Value;
 
@@ -57,13 +58,14 @@ public sealed class SemanticKernelProvider
         {
             case string x when x.Equals("AzureOpenAI", StringComparison.OrdinalIgnoreCase):
             case string y when y.Equals("AzureOpenAIText", StringComparison.OrdinalIgnoreCase):
+                var httpClient = httpClientFactory.CreateClient(nameof(TxHttpHandler));
                 var azureAIOptions = memoryOptions.GetServiceConfig<AzureOpenAIConfig>(configuration, "AzureOpenAIText");
 #pragma warning disable CA2000 // No need to dispose of HttpClient instances from IHttpClientFactory
                 builder.AddAzureOpenAIChatCompletion(
                     azureAIOptions.Deployment,
                     azureAIOptions.Endpoint,
                     azureAIOptions.APIKey,
-                    httpClient: httpClientFactory.CreateClient());
+                    httpClient: httpClient);
 #pragma warning restore CA2000
                 break;
 
@@ -73,7 +75,7 @@ public sealed class SemanticKernelProvider
                 builder.AddOpenAIChatCompletion(
                     openAIOptions.TextModel,
                     openAIOptions.APIKey,
-                    httpClient: httpClientFactory.CreateClient());
+                    httpClient: httpClientFactory.CreateClient(nameof(TxHttpHandler)));
 #pragma warning restore CA2000
                 break;
 

@@ -53,6 +53,7 @@
     <ProjectReference Include="..\sk\dotnet\src\Plugins\Plugins.Web\Plugins.Web.csproj" />
     <ProjectReference Include="..\sk\dotnet\src\SemanticKernel.Abstractions\SemanticKernel.Abstractions.csproj" />
     <ProjectReference Include="..\sk\dotnet\src\SemanticKernel.Core\SemanticKernel.Core.csproj" />
+    <ProjectReference Include="..\sk\dotnet\src\TxExperiment\TxExperiment.csproj" />
   </ItemGroup>
 
   <ItemGroup>

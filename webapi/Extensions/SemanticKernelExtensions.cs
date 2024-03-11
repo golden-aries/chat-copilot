@@ -21,6 +21,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.KernelMemory;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.Plugins.Core;
+using TxExperiment.Http;
 
 namespace CopilotChat.WebApi.Extensions;
 
@@ -119,6 +120,9 @@ internal static class SemanticKernelExtensions
 
     private static void InitializeKernelProvider(this WebApplicationBuilder builder)
     {
+        builder.Services.AddTransient<TxHttpHandler>();
+        builder.Services.AddHttpClient(nameof(TxHttpHandler))
+                .AddHttpMessageHandler<TxHttpHandler>();
         builder.Services.AddSingleton(sp => new SemanticKernelProvider(sp, builder.Configuration, sp.GetRequiredService<IHttpClientFactory>()));
     }
 
