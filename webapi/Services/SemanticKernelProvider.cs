@@ -50,7 +50,7 @@ public sealed class SemanticKernelProvider
     {
         var builder = Kernel.CreateBuilder();
 
-        builder.Services.AddLogging( lb => lb.AddConsole(lo => lo.LogToStandardErrorThreshold = LogLevel.Trace));
+        builder.Services.AddLogging(lb => lb.AddConsole(lo => lo.LogToStandardErrorThreshold = LogLevel.Trace));
 
         var memoryOptions = serviceProvider.GetRequiredService<IOptions<KernelMemoryConfig>>().Value;
 

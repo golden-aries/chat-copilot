@@ -355,11 +355,11 @@ public class ChatPlugin
         var remainingTokenBudget = this.GetChatContextTokenLimit(chatHistory, userMessage.ToFormattedString());
 
         // Query relevant semantic and document memories
-        //await this.UpdateBotResponseStatusOnClientAsync(chatId, "Extracting semantic and document memories", cancellationToken);
-        //var chatMemoriesTokenLimit = (int)(remainingTokenBudget * this._promptOptions.MemoriesResponseContextWeight);
-        //(var memoryText, var citationMap) = await this._semanticMemoryRetriever.QueryMemoriesAsync(userIntent, chatId, chatMemoriesTokenLimit);
-        string memoryText = "";
-        IDictionary<string, CitationSource> citationMap = new Dictionary<string, CitationSource>();
+        await this.UpdateBotResponseStatusOnClientAsync(chatId, "Extracting semantic and document memories", cancellationToken);
+        var chatMemoriesTokenLimit = (int)(remainingTokenBudget * this._promptOptions.MemoriesResponseContextWeight);
+        (var memoryText, var citationMap) = await this._semanticMemoryRetriever.QueryMemoriesAsync(userIntent, chatId, chatMemoriesTokenLimit);
+        //string memoryText = "";
+        //IDictionary<string, CitationSource> citationMap = new Dictionary<string, CitationSource>();
         //if (!string.IsNullOrWhiteSpace(memoryText))
         //{
         //    chatHistory.AddSystemMessage(memoryText);
