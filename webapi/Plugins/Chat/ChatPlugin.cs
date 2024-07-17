@@ -638,10 +638,11 @@ public class ChatPlugin
     {
         // Create the stream
         var chatCompletion = this._kernel.GetRequiredService<IChatCompletionService>();
+        var settings = this.CreateChatRequestSettings();
         var stream =
             chatCompletion.GetStreamingChatMessageContentsAsync(
                 prompt.MetaPromptTemplate,
-                this.CreateChatRequestSettings(),
+                settings,
                 this._kernel,
                 cancellationToken);
 
